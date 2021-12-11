@@ -1,0 +1,7 @@
+
+.*
+*.md
+*.yaml
+
+Dockerfile
+go-config-yaml

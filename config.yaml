@@ -1,0 +1,10 @@
+mode: test
+size: 42
+debug: true
+items:
+  - one
+  - two
+  - three
+log:
+  level: info
+  format: json
