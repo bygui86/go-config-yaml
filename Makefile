@@ -2,6 +2,7 @@
 # VARIABLES
 ## container
 CONTAINER_NAME = bygui86/go-config-yaml
+CONTAINER_TAG = V1.0.0
 ## global
 export GO111MODULE = on
 
@@ -12,11 +13,6 @@ export GO111MODULE = on
 
 
 # ACTIONS
-
-## internals
-
-__check-container-tag :
-	@[ "$(CONTAINER_TAG)" ] || ( echo "Missing container tag (CONTAINER_TAG), please define it and retry"; exit 1 )
 
 ## code
 
@@ -31,10 +27,10 @@ build : mod-down		## Build application
 
 ## cointaier
 
-container-build : __check-container-tag		## Build container image
+container-build :		## Build container image
 	docker build . -t $(CONTAINER_NAME):$(CONTAINER_TAG)
 
-container-push : __check-container-tag		## Push container image to Container Registry
+container-push :		## Push container image to Container Registry
 	docker push $(CONTAINER_NAME):$(CONTAINER_TAG)
 
 
@@ -58,4 +54,5 @@ print-variables :		## Print variables values
 	@echo "MAKEFILE_LIST: $(MAKEFILE_LIST)"
 	@echo "- - -"
 	@echo "CONTAINER_NAME: $(CONTAINER_NAME)"
+	@echo "CONTAINER_TAG: $(CONTAINER_TAG)"
 	@echo ""

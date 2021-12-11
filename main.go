@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"os"
 	"strings"
 	"time"
 
@@ -28,10 +27,11 @@ var (
 )
 
 func main() {
+	config = &Config{}
+
 	err := loadConfig()
 	if err != nil {
 		fmt.Println("load config failed: ", err.Error())
-		os.Exit(1)
 	}
 
 	for {
